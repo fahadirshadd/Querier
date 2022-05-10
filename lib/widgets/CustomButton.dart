@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:querier/widgets/CustomText.dart';
 
-
 class CustomButton extends StatelessWidget {
   final title, route;
-  VoidCallback? onPressed;
-  CustomButton({Key? key, required this.title, this.route, this.onPressed})
+  final GestureTapCallback onPressed;
+  CustomButton(
+      {Key? key, required this.title, this.route, required this.onPressed})
       : super(key: key);
 
   @override
@@ -20,12 +20,7 @@ class CustomButton extends StatelessWidget {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
           primary: Colors.black,
         ),
-        onPressed: () => {
-          onPressed,
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return route;
-          }))
-        },
+        onPressed: onPressed,
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 15),
           child: CustomText(

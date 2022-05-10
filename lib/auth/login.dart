@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
-import 'package:querier/dashboard.dart';
-import 'package:querier/signup.dart';
+import 'package:querier/admin/admin_dashboard.dart';
+
+import 'package:querier/auth/signup.dart';
+import 'package:querier/receiver/receiver_dashboard.dart';
+import 'package:querier/sender/sender_dashboard.dart';
+import 'package:querier/auth/signup.dart';
 
 import 'package:querier/widgets/CustomText.dart';
 import 'package:querier/widgets/custom_text_field.dart';
@@ -18,17 +22,17 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   get emailValidator => (value) {
-    if (value == null || value.isEmpty) {
-      return 'Please enter your Email';
-    }
-    return null;
-  };
+        if (value == null || value.isEmpty) {
+          return 'Please enter your Email';
+        }
+        return null;
+      };
   get passwordValidator => (value) {
-    if (value == null || value.isEmpty) {
-      return 'Please enter your Password';
-    }
-    return null;
-  };
+        if (value == null || value.isEmpty) {
+          return 'Please enter your Password';
+        }
+        return null;
+      };
   final _formKey = GlobalKey<FormState>();
   bool obscurePassword = true;
   //LoginController loginController = Get.find();
@@ -37,18 +41,18 @@ class _LoginState extends State<Login> {
 
   @override
   void initState() {
-    // emailController.text = "eve.holt@reqres.in";
-    // passwordController.text = "cityslicka";
-   // loginController.isLoginRoute.value = true;
+    emailController.text = "admin@test.com";
+    passwordController.text = "123456";
+    // loginController.isLoginRoute.value = true;
     super.initState();
-   // print(loginController.isLoginRoute.value);
+    // print(loginController.isLoginRoute.value);
   }
 
   @override
   Widget build(BuildContext context) {
     MySize().init(context);
     return Scaffold(
-     // drawer: LoginSideMenu(),
+      // drawer: LoginSideMenu(),
       body: Center(
         child: Form(
           key: _formKey,
@@ -131,7 +135,7 @@ class _LoginState extends State<Login> {
                             ? Icons.visibility
                             : Icons.visibility_off,
                         semanticLabel:
-                        obscurePassword ? 'hide password' : 'show password',
+                            obscurePassword ? 'hide password' : 'show password',
                       ),
                     )),
                 const SizedBox(
@@ -158,22 +162,39 @@ class _LoginState extends State<Login> {
                     onTap: () {
                       // Get.offAllNamed(routeHome);
                       // loginUser();
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Dashboard()));
+                      if (emailController.text == "sender@test.com" &&
+                          passwordController.text == "123456") {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SenderDashboard()));
+                      } else if (emailController.text == "receiver@test.com" &&
+                          passwordController.text == "123456") {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const ReceiverDashboard()));
+                      } else if (emailController.text == "admin@test.com" &&
+                          passwordController.text == "123456") {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const AdminDashboard()));
+                      }
                     },
                     child: Container(
-                          decoration: BoxDecoration(
-                              color: primaryColor,
-                              borderRadius: BorderRadius.circular(20)),
-                          alignment: Alignment.center,
-                          width: double.maxFinite,
-                          padding:
-                          const EdgeInsets.symmetric(vertical: 16),
-                          child: const CustomText(
-                            text: "Login",
-                            color: Colors.white,
-                          ),
-                        )
-                           ),
+                      decoration: BoxDecoration(
+                          color: primaryColor,
+                          borderRadius: BorderRadius.circular(20)),
+                      alignment: Alignment.center,
+                      width: double.maxFinite,
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      child: const CustomText(
+                        text: "Login",
+                        color: Colors.white,
+                      ),
+                    )),
                 const SizedBox(
                   height: 15,
                 ),
@@ -183,7 +204,10 @@ class _LoginState extends State<Login> {
                     const CustomText(text: "Do not have credentials? "),
                     InkWell(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => Signup()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Signup()));
                       },
                       child: CustomText(
                           text: "Request Credentials! ", color: primaryColor),

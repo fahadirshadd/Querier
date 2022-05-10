@@ -1,34 +1,35 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
-import 'package:querier/signup.dart';
+import 'package:querier/sender/sender_requests.dart';
+import 'package:querier/sender/sender_requests.dart';
+import 'package:querier/auth/signup.dart';
 
 import 'package:querier/widgets/CustomText.dart';
 import 'package:querier/widgets/custom_text_field.dart';
 import 'package:querier/widgets/size_config.dart';
 import 'package:querier/widgets/styles.dart';
 
-class Dashboard extends StatefulWidget {
-  const Dashboard({Key? key}) : super(key: key);
+class CreateRequests extends StatefulWidget {
+  const CreateRequests({Key? key}) : super(key: key);
 
   @override
-  State<Dashboard> createState() => _DashboardState();
+  State<CreateRequests> createState() => _CreateRequestsState();
 }
 
-class _DashboardState extends State<Dashboard> {
-
+class _CreateRequestsState extends State<CreateRequests> {
   get emailValidator => (value) {
-    if (value == null || value.isEmpty) {
-      return 'Please enter your Email';
-    }
-    return null;
-  };
+        if (value == null || value.isEmpty) {
+          return 'Please enter your Email';
+        }
+        return null;
+      };
   get passwordValidator => (value) {
-    if (value == null || value.isEmpty) {
-      return 'Please enter your Password';
-    }
-    return null;
-  };
+        if (value == null || value.isEmpty) {
+          return 'Please enter your Password';
+        }
+        return null;
+      };
   final _formKey = GlobalKey<FormState>();
   bool obscurePassword = true;
   //LoginController loginController = Get.find();
@@ -54,7 +55,6 @@ class _DashboardState extends State<Dashboard> {
         child: Form(
           key: _formKey,
           child: Container(
-
             constraints: const BoxConstraints(maxWidth: 1000),
             padding: const EdgeInsets.all(24),
             child: ListView(
@@ -88,7 +88,7 @@ class _DashboardState extends State<Dashboard> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Querier Dashboard",
+                        Text("Welcome to Sender Dashboard",
                             style: GoogleFonts.raleway(
                                 fontSize: 30, fontWeight: FontWeight.bold)),
                       ],
@@ -118,14 +118,14 @@ class _DashboardState extends State<Dashboard> {
                               CircleAvatar(
                                 radius: 30,
                                 backgroundImage: NetworkImage(
-                                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlrZqTCInyg6RfYC7Ape20o-EWP1EN_A8fOA&usqp=CAU"),
+                                    "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909__340.png"),
                                 child: Stack(children: const [
                                   Align(
                                     alignment: Alignment.bottomRight,
                                     child: CircleAvatar(
                                       radius: 10,
                                       backgroundColor: Colors.white70,
-                                      child: Icon(Icons.camera_alt,size: 15),
+                                      child: Icon(Icons.camera_alt, size: 15),
                                     ),
                                   ),
                                 ]),
@@ -136,33 +136,23 @@ class _DashboardState extends State<Dashboard> {
                             child: Column(
                               children: [
                                 Container(
-                                  padding:
-                                  EdgeInsets.symmetric(horizontal: MySize.size8),
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: MySize.size8),
                                   child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       CustomText(
                                         text: 'Jhonas Elie',
                                         fontWeight: FontWeight.w700,
                                         fontSize: MySize.size18,
                                       ),
-                                      Container(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 5.0, vertical: 4.0),
-                                        color: Colors.green.shade100,
-                                        child: CustomText(
-                                          color: Colors.green,
-                                          text: "Verified",
-                                          fontWeight: FontWeight.w800,
-                                          fontSize: 15.0,
-                                        ),
-                                      ),
                                     ],
                                   ),
                                 ),
                                 Container(
-                                  padding:
-                                  EdgeInsets.symmetric(horizontal: MySize.size8),
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: MySize.size8),
                                   child: Row(
                                     children: [
                                       CustomText(
@@ -173,12 +163,12 @@ class _DashboardState extends State<Dashboard> {
                                       SizedBox(
                                         width: 5,
                                       ),
-                                      IconButton(
-                                        onPressed: () {},
-                                        icon: Icon(Icons.edit),
-                                        iconSize: 20,
-                                        color: Colors.blue,
-                                      )
+                                      // IconButton(
+                                      //   onPressed: () {},
+                                      //   icon: Icon(Icons.edit),
+                                      //   iconSize: 20,
+                                      //   color: Colors.blue,
+                                      // )
                                     ],
                                   ),
                                 ),
@@ -191,7 +181,6 @@ class _DashboardState extends State<Dashboard> {
                     const SizedBox(
                       height: 15,
                     ),
-
                     CustomTextField(
                       controller: nameController,
                       labelText: "Query Title",
@@ -205,16 +194,15 @@ class _DashboardState extends State<Dashboard> {
                       labelText: "Team",
                       hintText: "Development team...",
                     ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    CustomTextField(
-
-                      controller: phoneController,
-                      labelText: "Reporting Manager",
-                      hintText: "Jhon...",
-                      keyboardType: TextInputType.number,
-                    ),
+                    // const SizedBox(
+                    //   height: 15,
+                    // ),
+                    // CustomTextField(
+                    //   controller: phoneController,
+                    //   labelText: "Reporting Manager",
+                    //   hintText: "Jhon...",
+                    //   keyboardType: TextInputType.number,
+                    // ),
                     const SizedBox(
                       height: 15,
                     ),
@@ -239,37 +227,34 @@ class _DashboardState extends State<Dashboard> {
                               borderRadius: BorderRadius.circular(20)),
                           alignment: Alignment.center,
                           width: double.maxFinite,
-                          padding:
-                          const EdgeInsets.symmetric(vertical: 16),
-                          child:  CustomText(
+                          padding: const EdgeInsets.symmetric(vertical: 16),
+                          child: CustomText(
                             text: "Choose files",
                             color: primaryColor,
                           ),
-                        )
-                    ),
+                        )),
                     const SizedBox(
                       height: 15,
                     ),
                     InkWell(
-                        onTap: () {
-                          // Get.offAllNamed(routeHome);
-                          // loginUser();
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: primaryColor,
-                              borderRadius: BorderRadius.circular(20)),
-                          alignment: Alignment.center,
-                          width: double.maxFinite,
-                          padding:
-                          const EdgeInsets.symmetric(vertical: 16),
-                          child: const CustomText(
-                            text: "Submit",
-                            color: Colors.white,
-                          ),
-                        )
+                      onTap: () {
+                        // Get.offAllNamed(routeHome);
+                        // loginUser();
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: primaryColor,
+                            borderRadius: BorderRadius.circular(20)),
+                        alignment: Alignment.center,
+                        width: double.maxFinite,
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        child: const CustomText(
+                          text: "Submit",
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
-
                   ],
                 ),
               ],
@@ -279,5 +264,4 @@ class _DashboardState extends State<Dashboard> {
       ),
     );
   }
-
 }
