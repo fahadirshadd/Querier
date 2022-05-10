@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
-import 'package:querier/auth/signup.dart';
-import 'package:querier/models/receiver_data_model.dart';
-import 'package:querier/widgets/CustomButton.dart';
 
-import 'package:querier/widgets/CustomText.dart';
-import 'package:querier/widgets/custom_text_field.dart';
-import 'package:querier/widgets/size_config.dart';
+import 'package:querier/models/receiver_data_model.dart';
+
+import 'package:querier/widgets/custom_text.dart';
+
 import 'package:querier/widgets/styles.dart';
 
 class ReceiverDashboard extends StatefulWidget {

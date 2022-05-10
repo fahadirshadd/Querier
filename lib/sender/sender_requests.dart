@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
-import 'package:querier/auth/signup.dart';
-import 'package:querier/widgets/CustomButton.dart';
 
-import 'package:querier/widgets/CustomText.dart';
-import 'package:querier/widgets/custom_text_field.dart';
-import 'package:querier/widgets/size_config.dart';
+import 'package:querier/widgets/custom_text.dart';
+
 import 'package:querier/widgets/styles.dart';
 
 class MyRequests extends StatefulWidget {
@@ -101,7 +98,7 @@ class _MyRequestsState extends State<MyRequests> {
                   child: Column(
                     children: [
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 8),
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -127,9 +124,9 @@ class _MyRequestsState extends State<MyRequests> {
                         ),
                       ),
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 8),
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
                         child: Row(
-                          children: [
+                          children: const [
                             CustomText(
                               text: "UI/UX Designer",
                               fontWeight: FontWeight.w500,
@@ -146,11 +143,11 @@ class _MyRequestsState extends State<MyRequests> {
                 )
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
-              children: [
+              children: const [
                 CustomText(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -158,18 +155,18 @@ class _MyRequestsState extends State<MyRequests> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
               children: [
-                CustomText(
+                const CustomText(
                   text:
                       "This is the description given by the sender to show the content This is the description given by the sender to show the content",
                 ),
                 Expanded(child: Container()),
                 IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.edit,
                     color: Colors.blue,
                   ),
