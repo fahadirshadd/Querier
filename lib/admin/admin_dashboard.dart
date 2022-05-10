@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
-import 'package:querier/auth/signup.dart';
-import 'package:querier/widgets/CustomButton.dart';
 
-import 'package:querier/widgets/CustomText.dart';
-import 'package:querier/widgets/custom_text_field.dart';
-import 'package:querier/widgets/size_config.dart';
+import 'package:querier/widgets/custom_text.dart';
+
 import 'package:querier/widgets/styles.dart';
 
 class AdminDashboard extends StatefulWidget {
@@ -115,11 +112,11 @@ class _AdminDashboardState extends State<AdminDashboard> {
                   child: Column(
                     children: [
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 8),
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            CustomText(
+                            const CustomText(
                               text: 'Jhonas Elie',
                               fontWeight: FontWeight.w700,
                               fontSize: 18,
@@ -128,9 +125,9 @@ class _AdminDashboardState extends State<AdminDashboard> {
                               decoration: BoxDecoration(
                                   color: Colors.green.shade50,
                                   borderRadius: BorderRadius.circular(30)),
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                   horizontal: 5.0, vertical: 4.0),
-                              child: CustomText(
+                              child: const CustomText(
                                 color: Colors.green,
                                 text: "2 days",
                                 fontWeight: FontWeight.w800,
@@ -141,9 +138,9 @@ class _AdminDashboardState extends State<AdminDashboard> {
                         ),
                       ),
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 8),
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
                         child: Row(
-                          children: [
+                          children: const [
                             CustomText(
                               text: "UI/UX Designer",
                               fontWeight: FontWeight.w500,
@@ -160,7 +157,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                 )
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
@@ -179,13 +176,13 @@ class _AdminDashboardState extends State<AdminDashboard> {
               children: [
                 IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.close),
+                  icon: const Icon(Icons.close),
                   color: Colors.red,
                 ),
                 Expanded(child: Container()),
                 IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.check),
+                  icon: const Icon(Icons.check),
                   color: Colors.green,
                 ),
               ],

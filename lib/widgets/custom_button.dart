@@ -1,8 +1,11 @@
+// ignore_for_file: prefer_const_constructors_in_immutables
+
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
-import 'package:querier/widgets/CustomText.dart';
+
+import 'package:querier/widgets/custom_text.dart';
 
 class CustomButton extends StatelessWidget {
+  // ignore: prefer_typing_uninitialized_variables
   final title, route;
   final GestureTapCallback onPressed;
   CustomButton(

@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
-import 'package:querier/sender/sender_requests.dart';
-import 'package:querier/sender/sender_requests.dart';
-import 'package:querier/auth/signup.dart';
 
-import 'package:querier/widgets/CustomText.dart';
+import 'package:querier/widgets/custom_text.dart';
 import 'package:querier/widgets/custom_text_field.dart';
 import 'package:querier/widgets/size_config.dart';
 import 'package:querier/widgets/styles.dart';
@@ -117,7 +114,7 @@ class _CreateRequestsState extends State<CreateRequests> {
                             children: [
                               CircleAvatar(
                                 radius: 30,
-                                backgroundImage: NetworkImage(
+                                backgroundImage: const NetworkImage(
                                     "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909__340.png"),
                                 child: Stack(children: const [
                                   Align(
@@ -154,7 +151,7 @@ class _CreateRequestsState extends State<CreateRequests> {
                                   padding: EdgeInsets.symmetric(
                                       horizontal: MySize.size8),
                                   child: Row(
-                                    children: [
+                                    children: const [
                                       CustomText(
                                         text: "UI/UX Designer",
                                         fontWeight: FontWeight.w500,
