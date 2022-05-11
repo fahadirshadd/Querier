@@ -35,19 +35,9 @@ class _MyRequestsState extends State<MyRequests> {
   TextEditingController phoneController = TextEditingController();
 
   @override
-  void initState() {
-    // emailController.text = "eve.holt@reqres.in";
-    // passwordController.text = "cityslicka";
-    // loginController.isLoginRoute.value = true;
-    super.initState();
-    // print(loginController.isLoginRoute.value);
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      // drawer: LoginSideMenu(),
       body: Center(
         child: Form(
           key: _formKey,
@@ -186,20 +176,6 @@ class _MyRequestsState extends State<MyRequests> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Expanded(
-            //   flex: 1,
-            //   child: Container(
-            //     // width: MediaQuery.of(context).size.width / 3,
-
-            //     // padding: const EdgeInsets.only(right: 12),
-            //     child: Image.asset(
-            //       "assets/images/pro_wear.png",
-            //       fit: BoxFit.cover,
-            //       height: 100,
-            //       // width: 300,
-            //     ),
-            //   ),
-            // ),
             Expanded(child: Container()),
           ],
         ),

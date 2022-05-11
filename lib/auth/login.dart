@@ -6,9 +6,8 @@ import 'package:querier/admin/admin_dashboard.dart';
 import 'package:querier/auth/signup.dart';
 import 'package:querier/receiver/receiver_dashboard.dart';
 import 'package:querier/sender/sender_dashboard.dart';
-import 'package:querier/auth/signup.dart';
 
-import 'package:querier/widgets/CustomText.dart';
+import 'package:querier/widgets/custom_text.dart';
 import 'package:querier/widgets/custom_text_field.dart';
 import 'package:querier/widgets/size_config.dart';
 import 'package:querier/widgets/styles.dart';
@@ -35,7 +34,7 @@ class _LoginState extends State<Login> {
       };
   final _formKey = GlobalKey<FormState>();
   bool obscurePassword = true;
-  //LoginController loginController = Get.find();
+
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -43,16 +42,14 @@ class _LoginState extends State<Login> {
   void initState() {
     emailController.text = "admin@test.com";
     passwordController.text = "123456";
-    // loginController.isLoginRoute.value = true;
+
     super.initState();
-    // print(loginController.isLoginRoute.value);
   }
 
   @override
   Widget build(BuildContext context) {
     MySize().init(context);
     return Scaffold(
-      // drawer: LoginSideMenu(),
       body: Center(
         child: Form(
           key: _formKey,
@@ -65,20 +62,6 @@ class _LoginState extends State<Login> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Expanded(
-                    //   flex: 1,
-                    //   child: Container(
-                    //     // width: MediaQuery.of(context).size.width / 3,
-
-                    //     // padding: const EdgeInsets.only(right: 12),
-                    //     child: Image.asset(
-                    //       "assets/images/pro_wear.png",
-                    //       fit: BoxFit.cover,
-                    //       height: 100,
-                    //       // width: 300,
-                    //     ),
-                    //   ),
-                    // ),
                     Expanded(child: Container()),
                   ],
                 ),
@@ -144,14 +127,6 @@ class _LoginState extends State<Login> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      children: [
-                        Checkbox(value: true, onChanged: (value) {}),
-                        const CustomText(
-                          text: "Remeber Me",
-                        ),
-                      ],
-                    ),
                     CustomText(text: "Forgot password?", color: primaryColor)
                   ],
                 ),
@@ -160,8 +135,6 @@ class _LoginState extends State<Login> {
                 ),
                 InkWell(
                     onTap: () {
-                      // Get.offAllNamed(routeHome);
-                      // loginUser();
                       if (emailController.text == "sender@test.com" &&
                           passwordController.text == "123456") {
                         Navigator.push(
@@ -205,9 +178,11 @@ class _LoginState extends State<Login> {
                     InkWell(
                       onTap: () {
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Signup()));
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Signup(),
+                          ),
+                        );
                       },
                       child: CustomText(
                           text: "Request Credentials! ", color: primaryColor),

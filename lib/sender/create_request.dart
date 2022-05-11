@@ -62,20 +62,6 @@ class _CreateRequestsState extends State<CreateRequests> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        // Expanded(
-                        //   flex: 1,
-                        //   child: Container(
-                        //     // width: MediaQuery.of(context).size.width / 3,
-
-                        //     // padding: const EdgeInsets.only(right: 12),
-                        //     child: Image.asset(
-                        //       "assets/images/pro_wear.png",
-                        //       fit: BoxFit.cover,
-                        //       height: 100,
-                        //       // width: 300,
-                        //     ),
-                        //   ),
-                        // ),
                         Expanded(child: Container()),
                       ],
                     ),
@@ -160,12 +146,6 @@ class _CreateRequestsState extends State<CreateRequests> {
                                       SizedBox(
                                         width: 5,
                                       ),
-                                      // IconButton(
-                                      //   onPressed: () {},
-                                      //   icon: Icon(Icons.edit),
-                                      //   iconSize: 20,
-                                      //   color: Colors.blue,
-                                      // )
                                     ],
                                   ),
                                 ),
@@ -191,15 +171,6 @@ class _CreateRequestsState extends State<CreateRequests> {
                       labelText: "Team",
                       hintText: "Development team...",
                     ),
-                    // const SizedBox(
-                    //   height: 15,
-                    // ),
-                    // CustomTextField(
-                    //   controller: phoneController,
-                    //   labelText: "Reporting Manager",
-                    //   hintText: "Jhon...",
-                    //   keyboardType: TextInputType.number,
-                    // ),
                     const SizedBox(
                       height: 15,
                     ),
@@ -214,10 +185,7 @@ class _CreateRequestsState extends State<CreateRequests> {
                       height: 15,
                     ),
                     InkWell(
-                        onTap: () {
-                          // Get.offAllNamed(routeHome);
-                          // loginUser();
-                        },
+                        onTap: () {},
                         child: Container(
                           decoration: BoxDecoration(
                               color: Colors.grey.shade100,
@@ -235,8 +203,6 @@ class _CreateRequestsState extends State<CreateRequests> {
                     ),
                     InkWell(
                       onTap: () {
-                        // Get.offAllNamed(routeHome);
-                        // loginUser();
                         Navigator.pop(context);
                       },
                       child: Container(
