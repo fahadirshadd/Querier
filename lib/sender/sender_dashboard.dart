@@ -3,13 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:querier/sender/create_request.dart';
 import 'package:querier/sender/sender_requests.dart';
-import 'package:querier/sender/sender_requests.dart';
-import 'package:querier/auth/signup.dart';
-import 'package:querier/widgets/CustomButton.dart';
 
-import 'package:querier/widgets/CustomText.dart';
-import 'package:querier/widgets/custom_text_field.dart';
-import 'package:querier/widgets/size_config.dart';
+import 'package:querier/widgets/custom_text.dart';
+
 import 'package:querier/widgets/styles.dart';
 
 class SenderDashboard extends StatefulWidget {
@@ -106,7 +102,7 @@ class _SenderDashboardState extends State<SenderDashboard> {
                     const SizedBox(
                       height: 15,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 30,
                     ),
                     Container(
@@ -119,21 +115,25 @@ class _SenderDashboardState extends State<SenderDashboard> {
                           primary: Colors.green,
                         ),
                         onPressed: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return CreateRequests();
-                          }));
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return const CreateRequests();
+                              },
+                            ),
+                          );
                         },
                         child: Container(
                           padding: const EdgeInsets.symmetric(vertical: 15),
-                          child: CustomText(
+                          child: const CustomText(
                             text: "Create New Requests",
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 30,
                     ),
                     Container(
@@ -146,14 +146,18 @@ class _SenderDashboardState extends State<SenderDashboard> {
                           primary: Colors.green,
                         ),
                         onPressed: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return MyRequests();
-                          }));
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return const MyRequests();
+                              },
+                            ),
+                          );
                         },
                         child: Container(
                           padding: const EdgeInsets.symmetric(vertical: 15),
-                          child: CustomText(
+                          child: const CustomText(
                             text: "My Requests",
                             fontWeight: FontWeight.bold,
                           ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:querier/auth/login.dart';
+import 'package:querier/models/receiver_data_model.dart';
 
 import 'package:querier/widgets/custom_text.dart';
 
@@ -65,10 +67,38 @@ class _AdminDashboardState extends State<AdminDashboard> {
                     ),
                     Row(
                       children: [
-                        Expanded(child: receiverRequestCard()),
-                        Expanded(child: receiverRequestCard()),
+                        Expanded(
+                            child: receiverRequestCard(
+                                name: receiverData[0]["name"],
+                                imgUrl: receiverData[0]["imgUrl"],
+                                days: receiverData[0]["days"],
+                                designation: receiverData[0]["designation"],
+                                reason: receiverData[0]["reason"])),
+                        Expanded(
+                            child: receiverRequestCard(
+                                name: receiverData[1]["name"],
+                                imgUrl: receiverData[1]["imgUrl"],
+                                days: receiverData[1]["days"],
+                                designation: receiverData[1]["designation"],
+                                reason: receiverData[1]["reason"])),
                       ],
-                    )
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: primaryColor,
+                        ),
+                        onPressed: () {
+                          Navigator.pushReplacement(context,
+                              MaterialPageRoute(builder: (context) {
+                            return const Login();
+                          }));
+                        },
+                        child: const CustomText(
+                          text: "Logout",
+                        ))
                   ],
                 ),
               ],
@@ -79,7 +109,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
     );
   }
 
-  Widget receiverRequestCard() {
+  Widget receiverRequestCard({imgUrl, name, days, designation, reason}) {
     return Card(
       elevation: 3,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -93,8 +123,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                   children: [
                     CircleAvatar(
                       radius: 30,
-                      backgroundImage: const NetworkImage(
-                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlrZqTCInyg6RfYC7Ape20o-EWP1EN_A8fOA&usqp=CAU"),
+                      backgroundImage: NetworkImage(imgUrl),
                       child: Stack(children: const [
                         Align(
                           alignment: Alignment.bottomRight,
@@ -116,8 +145,8 @@ class _AdminDashboardState extends State<AdminDashboard> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const CustomText(
-                              text: 'Jhonas Elie',
+                            CustomText(
+                              text: name,
                               fontWeight: FontWeight.w700,
                               fontSize: 18,
                             ),
@@ -127,9 +156,9 @@ class _AdminDashboardState extends State<AdminDashboard> {
                                   borderRadius: BorderRadius.circular(30)),
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 5.0, vertical: 4.0),
-                              child: const CustomText(
+                              child: CustomText(
                                 color: Colors.green,
-                                text: "2 days",
+                                text: "$days days",
                                 fontWeight: FontWeight.w800,
                                 fontSize: 15.0,
                               ),
@@ -140,13 +169,13 @@ class _AdminDashboardState extends State<AdminDashboard> {
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 8),
                         child: Row(
-                          children: const [
+                          children: [
                             CustomText(
-                              text: "UI/UX Designer",
+                              text: designation,
                               fontWeight: FontWeight.w500,
                               fontSize: 17.0,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 5,
                             ),
                           ],
@@ -161,11 +190,11 @@ class _AdminDashboardState extends State<AdminDashboard> {
               height: 20,
             ),
             Row(
-              children: const [
+              children: [
                 CustomText(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  text: "Friends Wedding Celebration",
+                  text: reason,
                 ),
               ],
             ),
