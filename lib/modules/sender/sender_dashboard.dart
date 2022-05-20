@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:google_fonts/google_fonts.dart';
-import 'package:querier/sender/create_request.dart';
-import 'package:querier/sender/sender_requests.dart';
+import 'package:querier/helpers/route_helper.dart';
 
 import 'package:querier/widgets/custom_text.dart';
 
@@ -115,14 +115,7 @@ class _SenderDashboardState extends State<SenderDashboard> {
                           primary: Colors.green,
                         ),
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return const CreateRequests();
-                              },
-                            ),
-                          );
+                          Get.toNamed(RouteHelper.getCreateRequestRoute());
                         },
                         child: Container(
                           padding: const EdgeInsets.symmetric(vertical: 15),
@@ -146,14 +139,7 @@ class _SenderDashboardState extends State<SenderDashboard> {
                           primary: Colors.green,
                         ),
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return const MyRequests();
-                              },
-                            ),
-                          );
+                          Get.toNamed(RouteHelper.getMyRequestRoute());
                         },
                         child: Container(
                           padding: const EdgeInsets.symmetric(vertical: 15),

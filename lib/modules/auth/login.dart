@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:google_fonts/google_fonts.dart';
-import 'package:querier/admin/admin_dashboard.dart';
+import 'package:querier/controllers/auth_controller.dart';
 
-import 'package:querier/auth/signup.dart';
-import 'package:querier/receiver/receiver_dashboard.dart';
-import 'package:querier/sender/sender_dashboard.dart';
+import 'package:querier/helpers/route_helper.dart';
 
 import 'package:querier/widgets/custom_text.dart';
 import 'package:querier/widgets/custom_text_field.dart';
@@ -20,6 +19,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  AuthController loginController = Get.find();
   get emailValidator => (value) {
         if (value == null || value.isEmpty) {
           return 'Please enter your Email';
@@ -40,8 +40,8 @@ class _LoginState extends State<Login> {
 
   @override
   void initState() {
-    emailController.text = "admin@test.com";
-    passwordController.text = "123456";
+    emailController.text = "eve.holt@reqres.in";
+    passwordController.text = "cityslicka";
 
     super.initState();
   }
@@ -135,39 +135,36 @@ class _LoginState extends State<Login> {
                 ),
                 InkWell(
                     onTap: () {
-                      if (emailController.text == "sender@test.com" &&
-                          passwordController.text == "123456") {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const SenderDashboard()));
-                      } else if (emailController.text == "receiver@test.com" &&
-                          passwordController.text == "123456") {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const ReceiverDashboard()));
-                      } else if (emailController.text == "admin@test.com" &&
-                          passwordController.text == "123456") {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const AdminDashboard()));
-                      }
+                      // if (emailController.text == "sender@test.com" &&
+                      //     passwordController.text == "123456") {
+                      //   Get.toNamed(RouteHelper.getSenderRoute());
+                      // } else if (emailController.text == "receiver@test.com" &&
+                      //     passwordController.text == "123456") {
+                      //   Get.toNamed(RouteHelper.getReceiverRoute());
+                      // } else if (emailController.text == "admin@test.com" &&
+                      //     passwordController.text == "123456") {
+                      //   Get.toNamed(RouteHelper.getAdminRoute());
+                      // }
+                      loginUser();
                     },
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: primaryColor,
-                          borderRadius: BorderRadius.circular(20)),
-                      alignment: Alignment.center,
-                      width: double.maxFinite,
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      child: const CustomText(
-                        text: "Login",
-                        color: Colors.white,
-                      ),
-                    )),
+                    child: GetX<AuthController>(
+                        builder: (_) => loginController
+                                    .isDataSubmitting.value ==
+                                false
+                            ? Container(
+                                decoration: BoxDecoration(
+                                    color: primaryColor,
+                                    borderRadius: BorderRadius.circular(20)),
+                                alignment: Alignment.center,
+                                width: double.maxFinite,
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 16),
+                                child: const CustomText(
+                                  text: "Login",
+                                  color: Colors.white,
+                                ),
+                              )
+                            : const CircularProgressIndicator())),
                 const SizedBox(
                   height: 15,
                 ),
@@ -177,12 +174,7 @@ class _LoginState extends State<Login> {
                     const CustomText(text: "Do not have credentials? "),
                     InkWell(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const Signup(),
-                          ),
-                        );
+                        Get.toNamed(RouteHelper.getSignupRoute());
                       },
                       child: CustomText(
                           text: "Request Credentials! ", color: primaryColor),
@@ -197,11 +189,11 @@ class _LoginState extends State<Login> {
     );
   }
 
-  // void loginUser() {
-  //   final _isValid = _formKey.currentState!.validate();
-  //   if (_isValid) {
-  //     loginController.loginWithDetails(
-  //         emailController.text, passwordController.text);
-  //   }
-  // }
+  void loginUser() {
+    final _isValid = _formKey.currentState!.validate();
+    if (_isValid) {
+      loginController.loginWithDetails(
+          emailController.text, passwordController.text);
+    }
+  }
 }

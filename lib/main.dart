@@ -1,12 +1,15 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:querier/auth/login.dart';
-import 'package:querier/controllers/register_controller.dart';
-import 'package:querier/helper/route_helper.dart';
+
+import 'package:querier/controllers/auth_controller.dart';
+
+import 'package:querier/helpers/route_helper.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  RegisterController registerController = Get.put(RegisterController());
+  AuthController registerController = Get.put(AuthController());
   runApp(const MyApp());
 }
 

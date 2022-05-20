@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:google_fonts/google_fonts.dart';
-import 'package:querier/controllers/register_controller.dart';
+import 'package:querier/controllers/auth_controller.dart';
+import 'package:querier/helpers/route_helper.dart';
 
 import 'package:querier/widgets/custom_text.dart';
 import 'package:querier/widgets/custom_text_field.dart';
@@ -16,7 +17,7 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
-  RegisterController registerController = Get.find();
+  AuthController registerController = Get.find();
   final _formKey = GlobalKey<FormState>();
   get usernameValidator => (value) {
         if (value == null || value.isEmpty) {
@@ -99,15 +100,6 @@ class _SignupState extends State<Signup> {
                 const SizedBox(
                   height: 15,
                 ),
-                // CustomTextField(
-                //   controller: phoneController,
-                //   labelText: "Phone Number",
-                //   hintText: "+92 3001234567",
-                //   keyboardType: TextInputType.number,
-                // ),
-                // const SizedBox(
-                //   height: 15,
-                // ),
                 CustomTextField(
                   obscureText: true,
                   controller: passwordController,
@@ -118,14 +110,6 @@ class _SignupState extends State<Signup> {
                 const SizedBox(
                   height: 15,
                 ),
-                // CustomTextField(
-                //   controller: confirmPasswordController,
-                //   labelText: "Confirm Password",
-                //   hintText: "123",
-                // ),
-                // const SizedBox(
-                //   height: 15,
-                // ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: const [],
@@ -137,7 +121,7 @@ class _SignupState extends State<Signup> {
                     onTap: () {
                       registerUser();
                     },
-                    child: GetX<RegisterController>(
+                    child: GetX<AuthController>(
                         builder: (_) => registerController
                                     .isDataSubmitting.value ==
                                 false
@@ -154,8 +138,7 @@ class _SignupState extends State<Signup> {
                                   color: Colors.white,
                                 ),
                               )
-                            : CircularProgressIndicator())),
-
+                            : const CircularProgressIndicator())),
                 const SizedBox(
                   height: 15,
                 ),
@@ -165,7 +148,7 @@ class _SignupState extends State<Signup> {
                     const CustomText(text: "Already have the credentials? "),
                     InkWell(
                       onTap: () {
-                        Navigator.pop(context);
+                        Get.offAllNamed(RouteHelper.getInitialRoute());
                       },
                       child:
                           CustomText(text: "Let's Query", color: primaryColor),
@@ -183,7 +166,7 @@ class _SignupState extends State<Signup> {
   void registerUser() {
     final _isValid = _formKey.currentState!.validate();
     if (_isValid) {
-      registerController.loginWithDetails(usernameController.text,
+      registerController.registerWithDetails(usernameController.text,
           emailController.text, passwordController.text);
     }
   }

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:google_fonts/google_fonts.dart';
-import 'package:querier/auth/login.dart';
+
+import 'package:querier/helpers/route_helper.dart';
 import 'package:querier/models/receiver_data_model.dart';
 
 import 'package:querier/widgets/custom_text.dart';
@@ -91,10 +93,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                           primary: primaryColor,
                         ),
                         onPressed: () {
-                          Navigator.pushReplacement(context,
-                              MaterialPageRoute(builder: (context) {
-                            return const Login();
-                          }));
+                          Get.offAllNamed(RouteHelper.getInitialRoute());
                         },
                         child: const CustomText(
                           text: "Logout",

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
@@ -203,7 +204,7 @@ class _CreateRequestsState extends State<CreateRequests> {
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.pop(context);
+                        Get.back();
                       },
                       child: Container(
                         decoration: BoxDecoration(
